@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import ScoreCard from './components/ScoreCard';
 import './App.css';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  credentials: 'include',
+  // clientState: {
+  //   defaults: defaultState,
+  //   resolvers: {}
+  // },
+});
+
+const event = "eed38457-db28-4658-ae4f-4d4d38e9e212"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <ScoreCard event={event} />
+    </ApolloProvider>
   );
 }
 
