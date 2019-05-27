@@ -6,11 +6,11 @@ export default class Baseball extends Component {
     render() {
 
         const info = this.props.data
-
+        const time = `4 minutes left in 1st quarter..etc`
 
         return (
             <div>
-                <h2> {(info.event_information.status === 'completed') ? ' This Game Has Ended' : (info.event_information.status === 'active') ? 'This Game is Live Now' : 'Pre Game'}</h2>
+                <h2> {(info.event_information.status === 'completed') ? ' This Game Has Ended' : (info.event_information.status === 'active') ? `This Game is Live Now: ${time} ` : 'Pre Game'}</h2>
                 <table>
                     <tr className="top">
                         <th style={{ borderTopLeftRadius: '10px', borderLeftWidth: '0px', width: '100px' }}></th>
@@ -59,8 +59,6 @@ export default class Baseball extends Component {
                     </tr>
                     <EventInfo data={info.event_information} />
                 </table>
-
-
             </div>
         );
     }
