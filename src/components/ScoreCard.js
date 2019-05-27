@@ -7,7 +7,7 @@ import '../App.css';
 
 function ScoreCard(props) {
     return (
-        <Query query={GET_GAME} fetchPolicy="network-only" variables={{ id: props.event }}>
+        <Query query={GET_GAME} fetchPolicy="network-only" pollInterval={15000} variables={{ id: props.event }}>
             {({ loading, error, data, refetch }) => {
                 if (loading) return 'Loading..'
                 if (error) { return `There is error with events query: ${error}` }
