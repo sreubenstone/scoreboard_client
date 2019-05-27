@@ -1,6 +1,6 @@
 import React from 'react';
-import BaseballLoader from '././Loaders/BaseballLoader';
-import BasketballLoader from '././Loaders/BasketballLoader';
+import Baseball from './Baseball';
+import Basketball from './Basketball';
 import { Query } from "react-apollo";
 import { GET_GAME } from '../queries';
 import '../App.css';
@@ -11,8 +11,11 @@ function ScoreCard(props) {
             {({ loading, error, data, refetch }) => {
                 if (loading) return 'Loading..'
                 if (error) { return `There is error with events query: ${error}` }
+                const event_information = JSON.parse(data.game.event_info)
                 return (
-                    (data.game.league === 'MLB') ? <BaseballLoader data={data.game} /> : <BasketballLoader data={data.game} />
+                    <div className="box1">
+                        {(event_information.league === 'MLB') ? <Baseball data={event_information} /> : <Basketball data={event_information} />}
+                    </div>
                 )
             }
             }
