@@ -6,10 +6,12 @@ export default class Basketball extends Component {
     render() {
 
         const info = this.props.data
+        const time = `4 minutes left in fourth quarter.`
+
 
         return (
             <div>
-                <h2> {(info.event_information.status === 'completed') ? ' This Game Has Ended' : (info.event_information.status === 'active') ? 'This Game is Live Now' : 'Pre Game'}</h2>
+                <h2> {(info.event_information.status === 'completed') ? ' This Game Has Ended' : (info.event_information.status === 'active') ? `This Game is Live Now: ${time}` : 'Pre Game'}</h2>
                 <table>
                     <tr className="top">
                         <th style={{ borderTopLeftRadius: '10px', borderLeftWidth: '0px', }}></th>

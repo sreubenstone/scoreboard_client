@@ -6,7 +6,7 @@ export default class Baseball extends Component {
     render() {
 
         const info = this.props.data
-        const time = `4 minutes left in 1st quarter..etc`
+        const time = `Top of the Fourth Inning.`
 
         return (
             <div>
